@@ -765,12 +765,6 @@
     transition: border-color 140ms ease, background 140ms ease, box-shadow 140ms ease;
 }
 
-.cpl-greeting-highlight {
-    border-color: var(--cpl-pink-500);
-    background: var(--cpl-lav-50);
-    box-shadow: 0 0 0 3px rgba(255, 126, 194, 0.22);
-}
-
 .cpl-greeting-saved {
     border-color: var(--cpl-lav-300);
     background: var(--cpl-lav-50);

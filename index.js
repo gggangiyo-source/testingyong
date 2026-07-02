@@ -33,7 +33,7 @@
         continuity: '',
         lorebookName: '',
         detailEntries: [],
-        greetingCount: 3,
+        greetingCount: 1,
         greetingTone: '',
         greetingExtra: '',
         greetings: [],
@@ -553,7 +553,7 @@
 
     async function generateGreetings() {
         const data = getChatData();
-        const count = Math.min(Math.max(Number(data.greetingCount) || 3, 1), 8);
+        const count = Math.min(Math.max(Number(data.greetingCount) || 1, 1), 8);
         const prompt = buildGreetingPrompt(count, data.greetingTone, data.greetingExtra);
 
         setGreetingBusy(true);
@@ -577,58 +577,6 @@
             showToast(`인사말 생성 실패: ${(error && error.message) || error}`, 'error');
         } finally {
             setGreetingBusy(false);
-        }
-    }
-
-    function pickRandomGreeting() {
-        const data = getChatData();
-        const list = [...(Array.isArray(data.savedGreetings) ? data.savedGreetings : []), ...(Array.isArray(data.greetings) ? data.greetings : [])];
-        const saved = Array.isArray(data.savedGreetings) ? data.savedGreetings : [];
-        if (!list.length && !saved.length) {
-            container.innerHTML = '<div class="cpl-empty">아직 생성되거나 저장된 인사말이 없습니다.</div>';
-            return;
-        }
-        const savedHtml = saved.length ? `
-            <div class="cpl-greeting-section-title"><i class="fa-solid fa-star"></i> 저장한 인사말</div>
-            ${saved.map((item) => `
-                <div class="cpl-greeting-item cpl-greeting-saved" data-id="${escapeHtml(item.id)}">
-                    <pre class="cpl-greeting-text">${escapeHtml(item.text)}</pre>
-                    <div class="cpl-greeting-actions">
-                        <button class="cpl-greeting-copy cpl-mini-button" type="button" data-id="${escapeHtml(item.id)}" title="복사"><i class="fa-solid fa-copy"></i></button>
-                        <button class="cpl-greeting-delete-saved cpl-mini-button" type="button" data-id="${escapeHtml(item.id)}" title="저장 삭제"><i class="fa-solid fa-bookmark-slash"></i></button>
-                    </div>
-                </div>
-            `).join('')}
-        ` : '';
-        const generatedHtml = list.length ? `
-            <div class="cpl-greeting-section-title"><i class="fa-solid fa-clock-rotate-left"></i> 생성된 인사말</div>
-            ${list.map((item) => `
-                <div class="cpl-greeting-item" data-id="${escapeHtml(item.id)}">
-                    <pre class="cpl-greeting-text">${escapeHtml(item.text)}</pre>
-                    <div class="cpl-greeting-actions">
-                        <button class="cpl-greeting-copy cpl-mini-button" type="button" data-id="${escapeHtml(item.id)}" title="복사"><i class="fa-solid fa-copy"></i></button>
-                        <button class="cpl-greeting-save cpl-mini-button" type="button" data-id="${escapeHtml(item.id)}" title="저장"><i class="fa-solid fa-star"></i></button>
-                        <button class="cpl-greeting-delete cpl-mini-button" type="button" data-id="${escapeHtml(item.id)}" title="삭제"><i class="fa-solid fa-xmark"></i></button>
-                    </div>
-                </div>
-            `).join('')}
-        ` : '<div class="cpl-empty">생성된 인사말이 없습니다.</div>';
-        container.innerHTML = savedHtml + generatedHtml;
-        return;
-        if (!list.length) {
-            showToast('생성된 인사말이 없습니다. 먼저 생성해 주세요.', 'warning');
-            return;
-        }
-        const pick = list[Math.floor(Math.random() * list.length)];
-        navigator.clipboard.writeText(pick.text).then(
-            () => showToast('무작위 인사말을 복사했습니다.', 'success'),
-            () => showToast('복사에 실패했습니다.', 'error'),
-        );
-        const el = document.querySelector(`.cpl-greeting-item[data-id="${pick.id}"]`);
-        if (el) {
-            el.classList.add('cpl-greeting-highlight');
-            setTimeout(() => el.classList.remove('cpl-greeting-highlight'), 900);
-            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     }
 
@@ -694,26 +642,6 @@
                 </div>
             </div>
         `).join('');
-    }
-
-    function pickRandomGreeting() {
-        const data = getChatData();
-        const list = [...(Array.isArray(data.savedGreetings) ? data.savedGreetings : []), ...(Array.isArray(data.greetings) ? data.greetings : [])];
-        if (!list.length) {
-            showToast('생성되거나 저장된 인사말이 없습니다. 먼저 생성해 주세요.', 'warning');
-            return;
-        }
-        const pick = list[Math.floor(Math.random() * list.length)];
-        navigator.clipboard.writeText(pick.text).then(
-            () => showToast('무작위 인사말을 복사했습니다.', 'success'),
-            () => showToast('복사에 실패했습니다.', 'error'),
-        );
-        const el = document.querySelector(`.cpl-greeting-item[data-id="${pick.id}"]`);
-        if (el) {
-            el.classList.add('cpl-greeting-highlight');
-            setTimeout(() => el.classList.remove('cpl-greeting-highlight'), 900);
-            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
     }
 
     function renderGreetings() {
@@ -1610,8 +1538,7 @@
                         </label>
 
                         <div class="cpl-greeting-controls">
-                            <button id="cpl-greeting-generate" class="cpl-button cpl-primary" type="button"><i class="fa-solid fa-wand-magic-sparkles"></i> 인사말 생성</button>
-                            <button id="cpl-greeting-random" class="cpl-button" type="button"><i class="fa-solid fa-shuffle"></i> 랜덤 복사</button>
+                            <button id="cpl-greeting-generate" class="cpl-button cpl-primary" type="button"><i class="fa-solid fa-wand-magic-sparkles"></i> 그리팅 생성</button>
                             <button id="cpl-greeting-clear" class="cpl-button cpl-danger" type="button"><i class="fa-solid fa-trash"></i> 목록 비우기</button>
                         </div>
                     </div>
@@ -1647,7 +1574,7 @@
         renderSavedPresets();
         renderCustomWorlds();
         renderDetailEntries();
-        $('#cpl-greeting-count').val(String(data.greetingCount || 3));
+        $('#cpl-greeting-count').val(String(data.greetingCount || 1));
         $('#cpl-greeting-tone').val(data.greetingTone || '');
         $('#cpl-greeting-extra').val(data.greetingExtra || '');
         $('#cpl-greeting-api-source').val(settings.greeting.apiSource || 'sillytavern');
@@ -1762,7 +1689,7 @@
 
         $(document).on('change input', '#cpl-greeting-count, #cpl-greeting-tone, #cpl-greeting-extra', function () {
             const data = getChatData();
-            data.greetingCount = Math.min(Math.max(Number($('#cpl-greeting-count').val()) || 3, 1), 8);
+            data.greetingCount = Math.min(Math.max(Number($('#cpl-greeting-count').val()) || 1, 1), 8);
             data.greetingTone = $('#cpl-greeting-tone').val();
             data.greetingExtra = $('#cpl-greeting-extra').val();
             saveSettings();
@@ -1782,8 +1709,6 @@
         });
 
         $(document).on('click', '#cpl-greeting-generate', generateGreetings);
-
-        $(document).on('click', '#cpl-greeting-random', pickRandomGreeting);
 
         $(document).on('click', '.cpl-greeting-copy', function () {
             copyGreeting(this.dataset.id);
