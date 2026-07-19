@@ -34,6 +34,7 @@
         lorebookName: '',
         detailEntries: [],
         greetingCount: 1,
+        greetingAvoidRepeat: true,
         greetingTone: '',
         greetingExtra: '',
         greetings: [],
@@ -50,7 +51,11 @@
             data: {
                 title: '오메가버스 채팅 설정',
                 world: '이 채팅은 오메가버스 세계관을 사용한다. 알파, 베타, 오메가 같은 2차 성별은 사회적 관습, 본능, 향, 각인, 지위, 관계 규범에 영향을 줄 수 있다. 사용자가 추가로 적은 세부 설정을 우선하며, 세계관 규칙은 채팅 안에서 일관되게 유지한다.',
-                sceneRules: '기본 persona를 덮어쓰지 않는다. 오메가버스 요소는 이 채팅방 전용 보조 설정으로만 적용한다. 사용자가 명시한 경계와 금지 사항을 우선한다.',
+                character: '캐릭터의 2차 성별, 발정기/사이클 유무와 주기, 향(페로몬)의 특징, 억제제 사용 여부, 사회적 지위나 소속을 이 채팅방 전용으로 추가 규정할 수 있다. 기본 성격, 말투, 가치관, 관계 이력은 유지하며 이 설정은 그 위에 얹는 보조 설정으로만 취급한다.',
+                user: '유저 persona에도 2차 성별과 관련 특성(발정기 유무, 향에 대한 반응, 억제제 사용 등)이 적용될 수 있다. 유저가 별도로 명시한 2차 성별이나 특성이 있다면 그것을 항상 최우선으로 따르고, 명시가 없을 때만 세계관 기본값을 적용한다.',
+                relationship: '두 사람의 관계에서는 각인 여부, 향의 궁합, 서열 차이, 발정기로 인한 긴장이 감정선과 갈등의 재료가 될 수 있다. 다만 관계의 핵심은 여전히 상호 신뢰와 합의이며, 사용자가 명시한 경계, 금기, 진행 속도가 세계관 설정보다 항상 우선한다.',
+                sceneRules: '기본 persona를 덮어쓰지 않는다. 오메가버스 요소는 이 채팅방 전용 보조 설정으로만 적용하며, 매 장면마다 향이나 발정기를 과도하게 강조하지 않고 필요한 곳에서만 자연스럽게 녹여 묘사한다. 사용자가 명시한 경계와 금지 사항을 항상 우선한다.',
+                continuity: '발정기 시기, 억제제 복용 여부, 각인 성립 여부, 향과 관련해 이미 벌어진 사건처럼 이 세계관에서 확정된 사실은 이후 장면에서도 임의로 바뀌지 않고 일관되게 유지한다.',
             },
         },
         {
@@ -60,7 +65,11 @@
             data: {
                 title: '센티넬버스 채팅 설정',
                 world: '이 채팅은 센티넬/가이드 세계관을 사용한다. 센티넬은 강화된 감각, 전투 능력, 폭주 위험을 가질 수 있고, 가이드는 안정화, 동조, 결속, 회복과 관련된 역할을 가질 수 있다. 사용자가 추가로 적은 기관, 계급, 능력 규칙을 우선한다.',
-                sceneRules: '기본 persona를 덮어쓰지 않는다. 센티넬버스 요소는 이 채팅방 전용 보조 설정으로만 적용한다. 갑작스러운 새 규칙보다 이미 적힌 연속성을 우선한다.',
+                character: '캐릭터가 센티넬인지 가이드인지, 감각 등급, 특기 감각(시각/청각/후각 등), 폭주 이력, 소속 기관과 계급을 이 채팅방 전용으로 추가 규정할 수 있다. 기본 성격, 말투, 배경 서사는 유지하며 이 설정은 그 위에 얹는 보조 설정으로만 취급한다.',
+                user: '유저 persona에도 센티넬 또는 가이드 역할, 등급, 소속이 적용될 수 있다. 유저가 명시한 역할이나 능력이 있다면 그것을 항상 최우선으로 따른다.',
+                relationship: '동조율, 결속(bond) 여부, 안정화 과정에서 발생하는 신체적·감정적 친밀감이 관계의 긴장과 유대감에 영향을 줄 수 있다. 관계의 핵심은 신뢰와 상호 돌봄이며, 사용자가 명시한 경계와 진행 속도가 세계관 설정보다 항상 우선한다.',
+                sceneRules: '기본 persona를 덮어쓰지 않는다. 센티넬버스 요소는 이 채팅방 전용 보조 설정으로만 적용한다. 폭주나 감각 과부하 같은 급격한 전개는 갑작스럽게 새로 만들어내기보다 이미 쌓인 연속성과 사용자가 명시한 규칙을 우선해서 다룬다.',
+                continuity: '동조 이력, 폭주 발생 여부와 경위, 결속 상태, 감각 관련 부상이나 치료처럼 이 세계관에서 확정된 사실은 이후 장면에서도 일관되게 유지한다.',
             },
         },
         {
@@ -71,7 +80,10 @@
                 title: '섹스피스톨즈식 수인 세계관 설정',
                 world: '이 채팅은 인간과 동물적 형질을 지닌 수인/혼혈 계통이 공존하는 세계관을 사용한다. 종족 계통, 본능, 페로몬 또는 향, 서열, 짝/각인, 혈통과 번식에 대한 사회적 규범이 관계와 갈등에 영향을 줄 수 있다. 구체적인 종족, 능력, 신체 특징, 사회 제도는 사용자가 적은 설정을 우선한다.',
                 character: '캐릭터에게 수인 계통, 동물적 특징, 본능적 반응, 혈통상 위치, 사회적 역할이 추가될 수 있다. 단, 기본 성격과 말투는 유지하고 이 채팅방 설정을 그 위에 반드시 함께 적용한다.',
-                sceneRules: '수인 세계관 요소는 장면의 분위기와 관계성에 꾸준히 반영한다. 사용자가 적은 종족/본능/관계 규칙은 기존 persona보다 우선하는 채팅방 전용 필수 설정으로 취급한다.',
+                user: '유저 persona에도 수인 계통이나 혼혈 특성, 그에 따른 사회적 위치가 적용될 수 있다. 유저가 명시한 종족, 혈통, 특성이 있다면 그것을 항상 최우선으로 따른다.',
+                relationship: '종족 간 궁합, 서열 차이, 짝짓기 관련 본능, 혈통 문제가 관계의 긴장과 감정선에 영향을 줄 수 있다. 관계의 핵심은 여전히 상호 신뢰와 존중이며, 사용자가 명시한 경계와 금기가 세계관 설정보다 항상 우선한다.',
+                sceneRules: '수인 세계관 요소는 장면의 분위기와 관계성에 꾸준히 반영하되, 매 장면마다 본능이나 향을 과도하게 강조하지 않는다. 사용자가 적은 종족/본능/관계 규칙은 기존 persona보다 우선하는 채팅방 전용 필수 설정으로 취급한다.',
+                continuity: '종족 설정, 혈통 관련 사건, 각인이나 짝 관계 성립 여부처럼 이 세계관에서 확정된 사실은 이후 장면에서도 임의로 바뀌지 않고 일관되게 유지한다.',
             },
         },
         {
@@ -81,8 +93,11 @@
             data: {
                 title: '돔섭버스 채팅 설정',
                 world: '이 채팅은 돔/섭 성향과 동조, 명령, 안정화, 규율, 상호 합의가 사회적 관계와 개인 정체성에 영향을 주는 돔섭버스 세계관을 사용한다. 돔, 섭, 스위치, 미분화 등 세부 분류와 제도는 사용자가 적은 설정을 우선한다.',
+                character: '캐릭터의 돔/섭/스위치 성향, 경험치, 선호하는 규칙이나 의식, 안전어 사용 여부를 이 채팅방 전용으로 추가 규정할 수 있다. 기본 성격과 말투는 유지하며 이 설정은 그 위에 얹는 보조 설정으로만 취급한다.',
+                user: '유저 persona에도 돔/섭/스위치 성향이 적용될 수 있다. 유저가 명시한 성향이나 경계가 있다면 그것을 항상 최우선으로 따른다.',
                 relationship: '관계성에서는 권력 차이보다 상호 인식, 신뢰, 경계, 합의, 보호와 긴장감을 중요하게 다룬다. 사용자가 적은 관계 규칙과 금지 사항은 반드시 유지한다.',
                 sceneRules: '돔섭버스 요소는 기본 persona를 삭제하지 않고 그 위에 덧씌워지는 필수 채팅방 설정이다. 명시된 경계, 안전 장치, 호칭, 규칙, 금지 사항은 항상 우선 적용한다.',
+                continuity: '합의된 규칙, 안전어, 이전 장면에서 정한 약속이나 경계처럼 이 세계관에서 확정된 사실은 이후 장면에서도 임의로 바뀌지 않고 일관되게 유지한다.',
             },
         },
     ];
@@ -362,10 +377,22 @@
         return parts.join('\n\n');
     }
 
-    function buildGreetingPrompt(count, tone, extra) {
+    function buildAvoidRepeatSection(avoidTexts) {
+        const list = Array.isArray(avoidTexts) ? avoidTexts.filter((text) => String(text || '').trim()) : [];
+        if (!list.length) return '';
+        const trimmed = list.slice(0, 15).map((text) => truncateContextText(text, 400));
+        const lines = [
+            'Previously generated or saved greetings for this chat (do NOT reuse):',
+            ...trimmed.map((text, index) => `${index + 1}. ${text}`),
+        ];
+        return lines.join('\n');
+    }
+
+    function buildGreetingPrompt(count, tone, extra, avoidTexts) {
         const canon = buildPrompt();
         const tavernContext = buildSillyTavernGreetingContext();
         const { charName, userName } = getPersonaNames();
+        const avoidSection = buildAvoidRepeatSection(avoidTexts);
         const lines = [
             'You are drafting opening greeting messages (the very first in-character message) for a roleplay chat inside SillyTavern.',
             charName ? `Character name: ${charName}` : '',
@@ -375,6 +402,7 @@
             `Write ${count} distinct greeting drafts. Each draft must be a complete, self-contained opening message written strictly in-character, consistent with the character card, user persona, author's note, active prompts, and chat-specific canon above.`,
             tone ? `Desired tone/style: ${tone}` : '',
             extra ? `Additional instructions: ${extra}` : '',
+            avoidSection ? `${avoidSection}\nEach new draft must be clearly different from all of the above in content, structure, and wording — no close paraphrases.` : '',
             'Output format rules: separate each draft with a line that contains only ---, and output nothing else (no numbering, no titles, no meta commentary, no explanations).',
         ].filter(Boolean);
         return lines.join('\n\n');
@@ -548,13 +576,16 @@
         btn.disabled = isBusy;
         btn.innerHTML = isBusy
             ? '<i class="fa-solid fa-spinner fa-spin"></i> 생성 중...'
-            : '<i class="fa-solid fa-wand-magic-sparkles"></i> 인사말 생성';
+            : '<i class="fa-solid fa-wand-magic-sparkles"></i> 그리팅 생성';
     }
 
     async function generateGreetings() {
         const data = getChatData();
         const count = Math.min(Math.max(Number(data.greetingCount) || 1, 1), 8);
-        const prompt = buildGreetingPrompt(count, data.greetingTone, data.greetingExtra);
+        const avoidTexts = data.greetingAvoidRepeat
+            ? [...(Array.isArray(data.savedGreetings) ? data.savedGreetings : []), ...(Array.isArray(data.greetings) ? data.greetings : [])].map((item) => item.text)
+            : [];
+        const prompt = buildGreetingPrompt(count, data.greetingTone, data.greetingExtra, avoidTexts);
 
         setGreetingBusy(true);
         try {
@@ -622,26 +653,6 @@
         data.savedGreetings = (data.savedGreetings || []).filter((entry) => entry.id !== id);
         saveSettings();
         renderGreetings();
-    }
-
-    function renderGreetings() {
-        const container = document.getElementById('cpl-greeting-list');
-        if (!container) return;
-        const data = getChatData();
-        const list = Array.isArray(data.greetings) ? data.greetings : [];
-        if (!list.length) {
-            container.innerHTML = '<div class="cpl-empty">아직 생성된 인사말이 없습니다.</div>';
-            return;
-        }
-        container.innerHTML = list.map((item) => `
-            <div class="cpl-greeting-item" data-id="${escapeHtml(item.id)}">
-                <pre class="cpl-greeting-text">${escapeHtml(item.text)}</pre>
-                <div class="cpl-greeting-actions">
-                    <button class="cpl-greeting-copy cpl-mini-button" type="button" data-id="${escapeHtml(item.id)}" title="복사"><i class="fa-solid fa-copy"></i></button>
-                    <button class="cpl-greeting-delete cpl-mini-button" type="button" data-id="${escapeHtml(item.id)}" title="삭제"><i class="fa-solid fa-xmark"></i></button>
-                </div>
-            </div>
-        `).join('');
     }
 
     function renderGreetings() {
@@ -750,7 +761,8 @@
         return Object.values(data || {}).some((value) => String(value || '').trim());
     }
 
-    function applyPresetData(data) {
+    function applyPresetData(data, label) {
+        const before = clone(getChatData());
         const target = getChatData();
         for (const field of BASIC_FIELDS) {
             target[field] = data[field] || '';
@@ -758,6 +770,7 @@
         saveSettings();
         loadFields();
         updateInjection();
+        pushUndo(label || '초안/프리셋 적용', () => restoreChatDataSnapshot(before));
     }
 
     function collectWorldDraftData() {
@@ -817,6 +830,12 @@
         settings.customWorlds = settings.customWorlds.filter((item) => item.id !== id);
         saveSettings();
         renderCustomWorlds();
+        pushUndo(`"${world.name}" 세계관 삭제 전`, () => {
+            const s = getSettings();
+            if (!s.customWorlds.some((item) => item.id === world.id)) s.customWorlds.push(clone(world));
+            saveSettings();
+            renderCustomWorlds();
+        });
     }
 
     function downloadJson(filename, payload) {
@@ -1131,6 +1150,76 @@
         if (currentValue && names.includes(currentValue)) select.value = currentValue;
     }
 
+    function diffLorebookMerge(newEntries, previousEntries) {
+        const prevList = Array.isArray(previousEntries) ? previousEntries : [];
+        const prevByKey = new Map(prevList.map((entry) => [`${entry.title}|${entry.keys}`, entry]));
+        const newKeys = new Set(newEntries.map((entry) => `${entry.title}|${entry.keys}`));
+
+        const changed = [];
+        newEntries.forEach((entry) => {
+            const prev = prevByKey.get(`${entry.title}|${entry.keys}`);
+            const isCustomized = prev && (prev.enabled || String(prev.note || '').trim());
+            if (prev && isCustomized && String(prev.source || '').trim() !== String(entry.source || '').trim()) {
+                changed.push(entry);
+            }
+        });
+
+        const removedCustomized = prevList.filter((entry) => {
+            const key = `${entry.title}|${entry.keys}`;
+            const isCustomized = entry.enabled || String(entry.note || '').trim();
+            return isCustomized && !newKeys.has(key);
+        });
+
+        return { changed, removedCustomized };
+    }
+
+    function showConflictPreview(diff, onConfirm) {
+        const existing = document.getElementById('cpl-conflict-modal');
+        if (existing) existing.remove();
+
+        const changedHtml = diff.changed.length ? `
+            <div class="cpl-conflict-group">
+                <div class="cpl-conflict-group-title"><i class="fa-solid fa-triangle-exclamation"></i> 원본 내용이 바뀐, 직접 설정한 항목 (${diff.changed.length})</div>
+                <div class="cpl-conflict-note">기존에 켜두거나 적어둔 override는 그대로 유지되지만, 로어북 원본 내용이 바뀌었으니 내용을 확인해 주세요.</div>
+                <ul>${diff.changed.map((entry) => `<li>${escapeHtml(entry.title)}</li>`).join('')}</ul>
+            </div>` : '';
+
+        const removedHtml = diff.removedCustomized.length ? `
+            <div class="cpl-conflict-group">
+                <div class="cpl-conflict-group-title"><i class="fa-solid fa-trash"></i> 새 목록에서 사라진, 직접 설정한 항목 (${diff.removedCustomized.length})</div>
+                <div class="cpl-conflict-note">계속 진행하면 아래 항목의 override 설정이 함께 사라집니다.</div>
+                <ul>${diff.removedCustomized.map((entry) => `<li>${escapeHtml(entry.title)}</li>`).join('')}</ul>
+            </div>` : '';
+
+        const html = `
+<div id="cpl-conflict-modal" class="cpl-modal-backdrop">
+    <div class="cpl-modal" role="dialog" aria-modal="true">
+        <div class="cpl-modal-header">
+            <i class="fa-solid fa-code-compare"></i>
+            <strong>로어북 변경사항 미리보기</strong>
+        </div>
+        <div class="cpl-modal-body">
+            ${changedHtml}${removedHtml}
+        </div>
+        <div class="cpl-modal-footer">
+            <button id="cpl-conflict-cancel" class="cpl-button" type="button">취소</button>
+            <button id="cpl-conflict-continue" class="cpl-button cpl-primary" type="button">계속 불러오기</button>
+        </div>
+    </div>
+</div>`;
+        document.body.insertAdjacentHTML('beforeend', html);
+
+        const modal = document.getElementById('cpl-conflict-modal');
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) modal.remove();
+        });
+        document.getElementById('cpl-conflict-cancel').addEventListener('click', () => modal.remove());
+        document.getElementById('cpl-conflict-continue').addEventListener('click', () => {
+            modal.remove();
+            onConfirm();
+        });
+    }
+
     function mergeEntriesPreservingOverrides(entries) {
         const data = getChatData();
         // 같은 이름으로 이미 불러온 적이 있으면 기존 enabled/note 값을 보존
@@ -1167,12 +1256,30 @@
             }
 
             const data = getChatData();
-            data.lorebookName = name;
-            data.detailEntries = mergeEntriesPreservingOverrides(entries);
-            saveSettings();
-            renderDetailEntries();
-            updateInjection();
-            showToast(`"${name}" 로어북을 불러왔습니다. (${entries.length}개 항목)`, 'success');
+            const diff = diffLorebookMerge(entries, data.detailEntries);
+            const applyLoad = () => {
+                const target = getChatData();
+                const before = clone(target.detailEntries);
+                target.lorebookName = name;
+                target.detailEntries = mergeEntriesPreservingOverrides(entries);
+                saveSettings();
+                renderDetailEntries();
+                updateInjection();
+                showToast(`"${name}" 로어북을 불러왔습니다. (${entries.length}개 항목)`, 'success');
+                pushUndo(`"${name}" 로어북 불러오기 전`, () => {
+                    const d = getChatData();
+                    d.detailEntries = clone(before);
+                    saveSettings();
+                    renderDetailEntries();
+                    updateInjection();
+                });
+            };
+
+            if (diff.changed.length || diff.removedCustomized.length) {
+                showConflictPreview(diff, applyLoad);
+            } else {
+                applyLoad();
+            }
         } catch (error) {
             console.error('[Chat Persona Lore] Lorebook load failed', error);
             showToast('로어북을 불러오는 중 오류가 발생했습니다.', 'error');
@@ -1195,12 +1302,30 @@
             }
 
             const data = getChatData();
-            data.lorebookName = sourceLabel || '캐릭터 연결 로어북';
-            data.detailEntries = mergeEntriesPreservingOverrides(entries);
-            saveSettings();
-            renderDetailEntries();
-            updateInjection();
-            showToast(`캐릭터 연결 로어북을 불러왔습니다. (${entries.length}개 항목, ${sourceLabel})`, 'success');
+            const diff = diffLorebookMerge(entries, data.detailEntries);
+            const applyLoad = () => {
+                const target = getChatData();
+                const before = clone(target.detailEntries);
+                target.lorebookName = sourceLabel || '캐릭터 연결 로어북';
+                target.detailEntries = mergeEntriesPreservingOverrides(entries);
+                saveSettings();
+                renderDetailEntries();
+                updateInjection();
+                showToast(`캐릭터 연결 로어북을 불러왔습니다. (${entries.length}개 항목, ${sourceLabel})`, 'success');
+                pushUndo('캐릭터 연결 로어북 불러오기 전', () => {
+                    const d = getChatData();
+                    d.detailEntries = clone(before);
+                    saveSettings();
+                    renderDetailEntries();
+                    updateInjection();
+                });
+            };
+
+            if (diff.changed.length || diff.removedCustomized.length) {
+                showConflictPreview(diff, applyLoad);
+            } else {
+                applyLoad();
+            }
         } catch (error) {
             console.error('[Chat Persona Lore] Bound lorebook load failed', error);
             showToast('캐릭터 로어북을 불러오는 중 오류가 발생했습니다.', 'error');
@@ -1251,6 +1376,12 @@
         settings.customPresets = settings.customPresets.filter((item) => item.id !== id);
         saveSettings();
         renderSavedPresets();
+        pushUndo(`"${preset.name}" 프리셋 삭제 전`, () => {
+            const s = getSettings();
+            if (!s.customPresets.some((item) => item.id === preset.id)) s.customPresets.push(clone(preset));
+            saveSettings();
+            renderSavedPresets();
+        });
     }
 
     function showToast(message, type) {
@@ -1259,13 +1390,37 @@
         }
     }
 
+    function filterBuiltinPresets() {
+        const query = presetSearchQuery.trim().toLowerCase();
+        const buttons = document.querySelectorAll('#cpl-builtin-presets-card .cpl-preset');
+        let visibleCount = 0;
+        buttons.forEach((btn) => {
+            const preset = BUILTIN_PRESETS.find((item) => item.id === btn.dataset.preset);
+            const match = !query || (preset && preset.name.toLowerCase().includes(query));
+            btn.style.display = match ? '' : 'none';
+            if (match) visibleCount += 1;
+        });
+        const empty = document.getElementById('cpl-builtin-presets-empty');
+        if (empty) empty.style.display = query && !visibleCount ? '' : 'none';
+    }
+
+    function applyPresetSearch(query) {
+        presetSearchQuery = query || '';
+        $('#cpl-preset-search-clear').toggle(!!presetSearchQuery);
+        filterBuiltinPresets();
+        renderSavedPresets();
+        renderCustomWorlds();
+    }
+
     function renderSavedPresets() {
         const container = document.getElementById('cpl-saved-presets');
         if (!container) return;
 
-        const presets = getSettings().customPresets;
+        const query = presetSearchQuery.trim().toLowerCase();
+        const all = getSettings().customPresets;
+        const presets = query ? all.filter((preset) => preset.name.toLowerCase().includes(query)) : all;
         if (!presets.length) {
-            container.innerHTML = '<div class="cpl-empty">저장된 프리셋이 없습니다.</div>';
+            container.innerHTML = `<div class="cpl-empty">${all.length ? '검색 결과가 없습니다.' : '저장된 프리셋이 없습니다.'}</div>`;
             return;
         }
 
@@ -1286,9 +1441,11 @@
         const container = document.getElementById('cpl-custom-worlds');
         if (!container) return;
 
-        const worlds = getSettings().customWorlds;
+        const query = presetSearchQuery.trim().toLowerCase();
+        const all = getSettings().customWorlds;
+        const worlds = query ? all.filter((world) => world.name.toLowerCase().includes(query)) : all;
         if (!worlds.length) {
-            container.innerHTML = '<div class="cpl-empty">No custom worlds yet.</div>';
+            container.innerHTML = `<div class="cpl-empty">${all.length ? '검색 결과가 없습니다.' : 'No custom worlds yet.'}</div>`;
             return;
         }
 
@@ -1357,6 +1514,7 @@
             </div>
             <div class="cpl-top-actions">
                 <span id="cpl-token-count" class="cpl-token-pill">~0 tokens</span>
+                <button id="cpl-undo" class="cpl-icon-btn" type="button" title="되돌릴 작업 없음" disabled><i class="fa-solid fa-rotate-left"></i></button>
                 <button id="cpl-close" class="cpl-icon-btn" type="button" title="닫기"><i class="fa-solid fa-xmark"></i></button>
             </div>
         </div>
@@ -1370,9 +1528,18 @@
                 </label>
 
                 <div class="cpl-card">
+                    <div class="cpl-search-row">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input id="cpl-preset-search" type="text" placeholder="프리셋/세계관 이름 검색...">
+                        <button id="cpl-preset-search-clear" class="cpl-icon-btn" type="button" title="검색 지우기" style="display:none;"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                </div>
+
+                <div class="cpl-card" id="cpl-builtin-presets-card">
                     <div class="cpl-card-title">세계관 초안</div>
                     <div class="cpl-card-note">누르면 현재 입력값을 프리셋 내용으로 교체합니다.</div>
                     ${builtInPresetHtml}
+                    <div id="cpl-builtin-presets-empty" class="cpl-empty" style="display:none;">검색 결과가 없습니다.</div>
                 </div>
 
                 <div class="cpl-card">
@@ -1537,6 +1704,11 @@
                             <textarea id="cpl-greeting-extra" placeholder="예: 2인칭으로 시작하지 말기, 장소 묘사를 먼저 넣기, 대사는 한 줄만 포함하기"></textarea>
                         </label>
 
+                        <label class="cpl-checkbox-row">
+                            <input id="cpl-greeting-avoid-repeat" type="checkbox">
+                            <span>이전에 생성/저장된 인사말과 겹치지 않게 생성</span>
+                        </label>
+
                         <div class="cpl-greeting-controls">
                             <button id="cpl-greeting-generate" class="cpl-button cpl-primary" type="button"><i class="fa-solid fa-wand-magic-sparkles"></i> 그리팅 생성</button>
                             <button id="cpl-greeting-clear" class="cpl-button cpl-danger" type="button"><i class="fa-solid fa-trash"></i> 목록 비우기</button>
@@ -1571,10 +1743,14 @@
             $(`#cpl-${field}`).val(data[field] || '');
         }
 
+        $('#cpl-preset-search').val(presetSearchQuery);
+        $('#cpl-preset-search-clear').toggle(!!presetSearchQuery);
+        filterBuiltinPresets();
         renderSavedPresets();
         renderCustomWorlds();
         renderDetailEntries();
         $('#cpl-greeting-count').val(String(data.greetingCount || 1));
+        $('#cpl-greeting-avoid-repeat').prop('checked', data.greetingAvoidRepeat !== false);
         $('#cpl-greeting-tone').val(data.greetingTone || '');
         $('#cpl-greeting-extra').val(data.greetingExtra || '');
         $('#cpl-greeting-api-source').val(settings.greeting.apiSource || 'sillytavern');
@@ -1593,11 +1769,36 @@
         renderPopup();
         bindPopupEvents();
         loadFields();
+        updateUndoButton();
         $('#chat-persona-lore-popup').fadeIn(120);
     }
 
     function closePopup() {
         $('#chat-persona-lore-popup').fadeOut(100);
+    }
+
+    let presetSearchQuery = '';
+
+    let undoState = null;
+
+    function updateUndoButton() {
+        const btn = document.getElementById('cpl-undo');
+        if (!btn) return;
+        btn.disabled = !undoState;
+        btn.title = undoState ? `되돌리기: ${undoState.label}` : '되돌릴 작업 없음';
+    }
+
+    function pushUndo(label, restoreFn) {
+        undoState = { label, restore: restoreFn };
+        updateUndoButton();
+    }
+
+    function restoreChatDataSnapshot(snapshot) {
+        const settings = getSettings();
+        settings.chatData[getChatKey()] = clone(snapshot);
+        saveSettings();
+        loadFields();
+        updateInjection();
     }
 
     let popupEventsBound = false;
@@ -1606,6 +1807,15 @@
         popupEventsBound = true;
 
         $(document).on('click', '#cpl-close, [data-cpl-close]', closePopup);
+
+        $(document).on('click', '#cpl-undo', function () {
+            if (!undoState) return;
+            const { restore, label } = undoState;
+            undoState = null;
+            updateUndoButton();
+            restore();
+            showToast(`되돌렸습니다: ${label}`, 'info');
+        });
 
         $(document).on('click', '.cpl-tab', function () {
             const page = this.dataset.page;
@@ -1640,11 +1850,20 @@
             updateInjection();
         });
 
+        $(document).on('input', '#cpl-preset-search', function () {
+            applyPresetSearch(this.value);
+        });
+
+        $(document).on('click', '#cpl-preset-search-clear', function () {
+            $('#cpl-preset-search').val('');
+            applyPresetSearch('');
+        });
+
         $(document).on('click', '.cpl-preset', function () {
             const preset = BUILTIN_PRESETS.find((item) => item.id === this.dataset.preset);
             if (!preset) return;
             if (hasAnyData(collectCurrentData()) && !confirm(`현재 입력값을 "${preset.name}" 초안으로 교체할까요?`)) return;
-            applyPresetData(preset.data);
+            applyPresetData(preset.data, `"${preset.name}" 초안 적용 전`);
             showToast('세계관 초안을 적용했습니다.', 'success');
         });
 
@@ -1666,7 +1885,7 @@
             const world = getSettings().customWorlds.find((item) => item.id === this.dataset.id);
             if (!world) return;
             if (hasAnyData(collectCurrentData()) && !confirm(`현재 입력값을 "${world.name}" 세계관으로 교체할까요?`)) return;
-            applyPresetData(world.data);
+            applyPresetData(world.data, `"${world.name}" 세계관 적용 전`);
             showToast('세계관을 적용했습니다.', 'success');
         });
 
@@ -1687,11 +1906,12 @@
             loadSelectedLorebook();
         });
 
-        $(document).on('change input', '#cpl-greeting-count, #cpl-greeting-tone, #cpl-greeting-extra', function () {
+        $(document).on('change input', '#cpl-greeting-count, #cpl-greeting-tone, #cpl-greeting-extra, #cpl-greeting-avoid-repeat', function () {
             const data = getChatData();
             data.greetingCount = Math.min(Math.max(Number($('#cpl-greeting-count').val()) || 1, 1), 8);
             data.greetingTone = $('#cpl-greeting-tone').val();
             data.greetingExtra = $('#cpl-greeting-extra').val();
+            data.greetingAvoidRepeat = $('#cpl-greeting-avoid-repeat').prop('checked');
             saveSettings();
         });
 
@@ -1730,9 +1950,16 @@
             const data = getChatData();
             if (!Array.isArray(data.greetings) || !data.greetings.length) return;
             if (!confirm('생성된 인사말 목록을 모두 비울까요?')) return;
+            const before = clone(data.greetings);
             data.greetings = [];
             saveSettings();
             renderGreetings();
+            pushUndo('그리팅 목록 비우기 전', () => {
+                const d = getChatData();
+                d.greetings = clone(before);
+                saveSettings();
+                renderGreetings();
+            });
         });
 
         $(document).on('change', '.cpl-detail-enabled', function () {
@@ -1757,7 +1984,7 @@
             const preset = getSettings().customPresets.find((item) => item.id === this.dataset.id);
             if (!preset) return;
             if (hasAnyData(collectCurrentData()) && !confirm(`현재 입력값을 "${preset.name}" 프리셋으로 교체할까요?`)) return;
-            applyPresetData(preset.data);
+            applyPresetData(preset.data, `"${preset.name}" 프리셋 적용 전`);
             showToast('프리셋을 적용했습니다.', 'success');
         });
 
@@ -1776,10 +2003,12 @@
 
         $(document).on('click', '#cpl-clear', function () {
             if (!confirm('현재 채팅의 Chat Persona Lore 설정을 비울까요?')) return;
+            const before = clone(getChatData());
             getSettings().chatData[getChatKey()] = clone(DEFAULT_CHAT_DATA);
             saveSettings();
             loadFields();
             updateInjection();
+            pushUndo('현재 채팅 비우기 전', () => restoreChatDataSnapshot(before));
         });
     }
 
